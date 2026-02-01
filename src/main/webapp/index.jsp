@@ -105,7 +105,7 @@
     </div>
 
     <h2>🎯 Training Mode</h2>
-    <p>Classroom + Online</p>
+    <p>Offline + Online</p>
 
     <button class="btn" onclick="toggleInfo()">Know More</button>
 
