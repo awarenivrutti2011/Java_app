@@ -2,125 +2,159 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ICC Men's T20 World Cup 2026</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps Practice Website</title>
 
 <style>
-/* ===== GLOBAL ===== */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #0f2027;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #fff;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ===== HERO ===== */
+body {
+    background: #0f2027;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* ===== HERO SECTION ===== */
 .hero {
-  text-align: center;
-  padding: 70px 20px;
-  background: linear-gradient(135deg, #ff512f, #dd2476);
+    position: relative;
+    height: 100vh;
+    background: url("images/hero.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Moving Light Effect */
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0,198,255,0.3), transparent 60%);
+    animation: moveLight 6s linear infinite;
+}
+
+@keyframes moveLight {
+    0%   { transform: translate(-50%, -50%); }
+    50%  { transform: translate(0%, 0%); }
+    100% { transform: translate(-50%, -50%); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    border-radius: 12px;
 }
 
 .hero h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #00c6ff;
 }
 
 .hero p {
-  font-size: 1.2rem;
-  opacity: 0.9;
+    font-size: 1.2rem;
 }
 
-/* ===== SECTIONS ===== */
+/* ===== NAV ===== */
+nav {
+    background: #111;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #00c6ff;
+}
+
+/* ===== SECTION ===== */
 section {
-  padding: 50px 20px;
-  max-width: 1200px;
-  margin: auto;
+    padding: 70px 10%;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #ffcc00;
+/* ===== NOTE BOX ===== */
+.note {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: #fff;
+    padding: 20px;
+    border-left: 6px solid #fff;
+    margin: 20px 0;
+    border-radius: 8px;
 }
 
-/* ===== TEAMS ===== */
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
+/* ===== SERVICES ===== */
+.services {
+    background: #f4f6f8;
+    color: #333;
 }
 
-.team-card {
-  padding: 30px;
-  text-align: center;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #fff;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  transition: transform 0.3s;
+.service-box {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 40px;
 }
 
-.team-card:hover {
-  transform: translateY(-5px);
+.card {
+    background: #fff;
+    width: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.india { background: #1a237e; }
-.australia { background: #f9a825; color:#000; }
-.england { background: #c62828; }
-.pakistan { background: #2e7d32; }
-.southafrica { background: #33691e; }
-.newzealand { background: #263238; }
-
-/* ===== PLAYERS ===== */
-.player-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(0,198,255,0.4);
 }
 
-.player-card {
-  background: #ffffff;
-  color: #333;
-  border-radius: 15px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
 }
 
-.player-card img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 5px solid #dd2476;
+.card-content {
+    padding: 20px;
 }
 
-.player-card h3 {
-  margin: 15px 0 5px;
-  color: #dd2476;
+.card h3 {
+    margin-bottom: 10px;
+    color: #0072ff;
 }
 
-.player-card p {
-  font-size: 0.9rem;
+/* ===== CONTACT ===== */
+.contact {
+    text-align: center;
 }
 
 /* ===== FOOTER ===== */
 footer {
-  text-align: center;
-  padding: 25px;
-  background: #000;
-  color: #aaa;
-  font-size: 0.9rem;
+    background: #111;
+    text-align: center;
+    padding: 20px;
+    color: #aaa;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 600px) {
-  .hero h1 {
-    font-size: 2.2rem;
-  }
+footer span {
+    color: #00c6ff;
 }
 </style>
 </head>
@@ -128,73 +162,317 @@ footer {
 <body>
 
 <!-- HERO -->
-<header class="hero">
-  <h1>🏏 ICC Men's T20 World Cup 2026</h1>
-  <p>The Ultimate Cricket Battle</p>
-</header>
+<div class="hero">
+    <div class="hero-content">
+        <h1>DevOps Practice Hub</h1>
+        <p>HTML • CSS • CI/CD • Cloud Deployment</p>
+    </div>
+</div>
 
-<!-- TEAMS -->
-<section>
-  <h2>🌍 Participating Teams</h2>
-  <div class="team-grid">
-    <div class="team-card india">India</div>
-    <div class="team-card australia">Australia</div>
-    <div class="team-card england">England</div>
-    <div class="team-card pakistan">Pakistan</div>
-    <div class="team-card southafrica">South Africa</div>
-    <div class="team-card newzealand">New Zealand</div>
-  </div>
+<!-- NAV -->
+<nav>
+    <a href="#about">About</a>
+    <a href="#services">Practice</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<!-- ABOUT -->
+<section id="about">
+    <h2>About This Website</h2>
+
+    <div class="note">
+        📌 <strong>Practice Note:</strong>  
+        This site is perfect for Nginx, Docker, Kubernetes, Jenkins,
+        AWS EC2 & S3 static hosting demos.
+    </div>
+
+    <p>
+        This modern static website is created using pure HTML and CSS.
+        It includes animations, images, cards, and professional UI
+        used in real-world DevOps demos.
+    </p>
 </section>
 
-<!-- PLAYERS -->
-<section>
-  <h2>⭐ Star Players</h2>
-  <div class="player-grid" id="players"></div>
+<!-- SERVICES -->
+<section id="services" class="services">
+    <h2>What You Can Practice</h2>
+
+    <div class="service-box">
+        <div class="card">
+            <img src="images/html.png" alt="HTML CSS">
+            <div class="card-content">
+                <h3>HTML & CSS</h3>
+                <p>Layouts, animations, cards, hero sections.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/devops.png" alt="DevOps">
+            <div class="card-content">
+                <h3>DevOps Deployment</h3>
+                <p>Nginx, Docker, Kubernetes, EC2, S3 hosting.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/cicd.png" alt="CI CD">
+            <div class="card-content">
+                <h3>CI/CD Pipelines</h3>
+                <p>Jenkins, GitHub Actions, automation demos.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- FOOTER -->
+<!-- CONTACT -->
+<section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>Email: devops.practice@example.com</p>
+    <p>Location: India 🇮🇳</p>
+</section>
+
 <footer>
-  © 2026 ICC Men's T20 World Cup | Powered by Step_up Classes
+    <p>© 2026 <span>DevOps Practice Hub</span> | Built for Hands-On Learning 🚀</p>
 </footer>
 
-<script>
-/* ===== PLAYER DATA (Dynamic via JS) ===== */
-const players = [
-  {
-    name: "Virat Kohli",
-    team: "India",
-    img: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1"
-  },
-  {
-    name: "Babar Azam",
-    team: "Pakistan",
-    img: "https://images.unsplash.com/photo-1527980965255-d3b416303d12"
-  },
-  {
-    name: "Jos Buttler",
-    team: "England",
-    img: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39"
-  },
-  {
-    name: "David Warner",
-    team: "Australia",
-    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d"
-  }
-];
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps Practice Website</title>
 
-const container = document.getElementById("players");
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-players.forEach(player => {
-  const card = document.createElement("div");
-  card.className = "player-card";
-  card.innerHTML = `
-    <img src="${player.img}" alt="${player.name}">
-    <h3>${player.name}</h3>
-    <p>${player.team}</p>
-  `;
-  container.appendChild(card);
-});
-</script>
+body {
+    background: #0f2027;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    position: relative;
+    height: 100vh;
+    background: url("images/hero.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Moving Light Effect */
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0,198,255,0.3), transparent 60%);
+    animation: moveLight 6s linear infinite;
+}
+
+@keyframes moveLight {
+    0%   { transform: translate(-50%, -50%); }
+    50%  { transform: translate(0%, 0%); }
+    100% { transform: translate(-50%, -50%); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    border-radius: 12px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #00c6ff;
+}
+
+.hero p {
+    font-size: 1.2rem;
+}
+
+/* ===== NAV ===== */
+nav {
+    background: #111;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #00c6ff;
+}
+
+/* ===== SECTION ===== */
+section {
+    padding: 70px 10%;
+}
+
+/* ===== NOTE BOX ===== */
+.note {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: #fff;
+    padding: 20px;
+    border-left: 6px solid #fff;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+/* ===== SERVICES ===== */
+.services {
+    background: #f4f6f8;
+    color: #333;
+}
+
+.service-box {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.card {
+    background: #fff;
+    width: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(0,198,255,0.4);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #0072ff;
+}
+
+/* ===== CONTACT ===== */
+.contact {
+    text-align: center;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #111;
+    text-align: center;
+    padding: 20px;
+    color: #aaa;
+}
+
+footer span {
+    color: #00c6ff;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-content">
+        <h1>DevOps Practice Hub</h1>
+        <p>HTML • CSS • CI/CD • Cloud Deployment</p>
+    </div>
+</div>
+
+<!-- NAV -->
+<nav>
+    <a href="#about">About</a>
+    <a href="#services">Practice</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<!-- ABOUT -->
+<section id="about">
+    <h2>About This Website</h2>
+
+    <div class="note">
+        📌 <strong>Practice Note:</strong>  
+        This site is perfect for Nginx, Docker, Kubernetes, Jenkins,
+        AWS EC2 & S3 static hosting demos.
+    </div>
+
+    <p>
+        This modern static website is created using pure HTML and CSS.
+        It includes animations, images, cards, and professional UI
+        used in real-world DevOps demos.
+    </p>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+    <h2>What You Can Practice</h2>
+
+    <div class="service-box">
+        <div class="card">
+            <img src="images/html.png" alt="HTML CSS">
+            <div class="card-content">
+                <h3>HTML & CSS</h3>
+                <p>Layouts, animations, cards, hero sections.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/devops.png" alt="DevOps">
+            <div class="card-content">
+                <h3>DevOps Deployment</h3>
+                <p>Nginx, Docker, Kubernetes, EC2, S3 hosting.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/cicd.png" alt="CI CD">
+            <div class="card-content">
+                <h3>CI/CD Pipelines</h3>
+                <p>Jenkins, GitHub Actions, automation demos.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>Email: devops.practice@example.com</p>
+    <p>Location: India 🇮🇳</p>
+</section>
+
+<footer>
+    <p>© 2026 <span>DevOps Practice Hub</span> | Built for Hands-On Learning 🚀</p>
+</footer>
 
 </body>
 </html>
