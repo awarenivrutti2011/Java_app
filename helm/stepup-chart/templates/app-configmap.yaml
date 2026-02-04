@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stepup-config
+  namespace: {{ .Values.namespace }}
+data:
+{{- range $key, $value := .Values.config }}
+  {{ $key }}: "{{ $value }}"
+{{- end }}
+

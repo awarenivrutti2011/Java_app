@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.app.replicas }}
+  selector:
+    matchLabels:
+      app: stepup
+  template:
+    metadata:
+      labels:
+        app: stepup
+    spec:
+      containers:
+      - name: stepup
+        image: "{{ .Values.app.image }}:{{ .Values.app.tag }}"
+        ports:
+        - containerPort: {{ .Values.app.service.targetPort }}
+        envFrom:
+        - configMapRef:
+            name: stepup-config
+        - secretRef:
+            name: stepup-secret
+
