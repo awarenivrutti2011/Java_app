@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: stepup-log-agent
+  namespace: stepup
+spec:
+  selector:
+    matchLabels:
+      app: log-agent
+  template:
+    metadata:
+      labels:
+        app: log-agent
+    spec:
+      containers:
+      - name: log-agent
+        image: busybox
+        command: ["/bin/sh", "-c"]
+        args: ["tail -n+1 -F /logs/*.log"]
+        volumeMounts:
+        - name: logs
+          mountPath: /logs
+      volumes:
+      - name: logs
+        hostPath:
+          path: /mnt/stepup-data
+
