@@ -19,7 +19,7 @@
 </p>
 
 <p>
-    <a href="worldcup.html">T20 World Cup 2026</a>
+    <a href="stepup.html">T20 World Cup 2026</a>
 </p>
 
 </body>
