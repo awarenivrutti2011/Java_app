@@ -1,479 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DevOps Practice Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps & Linux Learning Platform</title>
+    <style>
+        /* --- CORE STYLES --- */
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; margin: 0; background-color: #1e1e1e; color: #d4d4d4; scroll-behavior: smooth; }
+        header { background-color: #252526; padding: 1.5rem; text-align: center; border-bottom: 2px solid #333; }
+        header h1 { color: #4fc1ff; margin: 0; }
+        .container { display: flex; max-width: 1200px; margin: 0 auto; }
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
+        /* Sidebar */
+        .sidebar { width: 260px; background: #2d2d2d; padding: 20px; height: 100vh; position: sticky; top: 0; overflow-y: auto; }
+        .sidebar h3 { color: #ce9178; font-size: 1rem; border-bottom: 1px solid #444; padding-top: 10px; }
+        .sidebar ul { list-style: none; padding: 0; }
+        .sidebar ul li a { color: #9cdcfe; text-decoration: none; display: block; padding: 8px 0; font-size: 0.9rem; }
+        .sidebar ul li a:hover { color: #fff; }
 
-body {
-    background: #0f2027;
-    color: #fff;
-    line-height: 1.6;
-}
+        /* Main Content */
+        .content { flex: 1; padding: 40px; }
 
-/* ===== HERO SECTION ===== */
-.hero {
-    position: relative;
-    height: 100vh;
-    background: url("images/hero.jpg") center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-}
+        /* Roadmap Section */
+        .roadmap-container { background: #252526; padding: 25px; border-radius: 8px; border-left: 5px solid #b5cea8; margin-bottom: 40px; }
+        .roadmap-item { display: flex; align-items: center; margin: 10px 0; padding: 10px; background: #2d2d2d; border-radius: 5px; }
+        .roadmap-item input[type="checkbox"] { margin-right: 15px; accent-color: #b5cea8; width: 18px; height: 18px; cursor: pointer; }
+        .roadmap-item input[type="checkbox"]:checked + span { text-decoration: line-through; color: #6a9955; }
 
-/* Moving Light Effect */
-.hero::before {
-    content: "";
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(0,198,255,0.3), transparent 60%);
-    animation: moveLight 6s linear infinite;
-}
+        /* Contact Form */
+        .contact-section { background: #252526; padding: 30px; border-radius: 8px; border: 1px solid #333; margin-top: 50px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; color: #9cdcfe; }
+        .form-group input, .form-group textarea { 
+            width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #444; 
+            background: #3c3c3c; color: white; box-sizing: border-box;
+        }
+        .form-group textarea { height: 100px; resize: vertical; }
+        
+        /* Buttons */
+        .btn-check { background: #b5cea8; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .btn-check:hover { background: #8fb17d; transform: translateY(-2px); }
 
-@keyframes moveLight {
-    0%   { transform: translate(-50%, -50%); }
-    50%  { transform: translate(0%, 0%); }
-    100% { transform: translate(-50%, -50%); }
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-    background: rgba(0,0,0,0.6);
-    padding: 40px;
-    border-radius: 12px;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    color: #00c6ff;
-}
-
-.hero p {
-    font-size: 1.2rem;
-}
-
-/* ===== NAV ===== */
-nav {
-    background: #111;
-    padding: 15px;
-    text-align: center;
-}
-
-nav a {
-    color: #fff;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav a:hover {
-    color: #00c6ff;
-}
-
-/* ===== SECTION ===== */
-section {
-    padding: 70px 10%;
-}
-
-/* ===== NOTE BOX ===== */
-.note {
-    background: linear-gradient(135deg, #00c6ff, #0072ff);
-    color: #fff;
-    padding: 20px;
-    border-left: 6px solid #fff;
-    margin: 20px 0;
-    border-radius: 8px;
-}
-
-/* ===== SERVICES ===== */
-.services {
-    background: #f4f6f8;
-    color: #333;
-}
-
-.service-box {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    margin-top: 40px;
-}
-
-.card {
-    background: #fff;
-    width: 300px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 25px 50px rgba(0,198,255,0.4);
-}
-
-.card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-}
-
-.card-content {
-    padding: 20px;
-}
-
-.card h3 {
-    margin-bottom: 10px;
-    color: #0072ff;
-}
-
-/* ===== CONTACT ===== */
-.contact {
-    text-align: center;
-}
-
-/* ===== FOOTER ===== */
-footer {
-    background: #111;
-    text-align: center;
-    padding: 20px;
-    color: #aaa;
-}
-
-footer span {
-    color: #00c6ff;
-}
-</style>
+        /* Responsive */
+        @media (max-width: 768px) { .container { flex-direction: column; } .sidebar { width: 100%; height: auto; position: relative; } }
+    </style>
 </head>
-
 <body>
 
-<!-- HERO -->
-<div class="hero">
-    <div class="hero-content">
-        <h1>DevOps Practice Hub</h1>
-        <p>HTML • CSS • CI/CD • Cloud Deployment</p>
+    <header>
+        <h1>DevOps & Linux Lab</h1>
+    </header>
+
+    <div class="container">
+        <nav class="sidebar">
+            <h3>Navigation</h3>
+            <ul>
+                <li><a href="#roadmap">Learning Roadmap</a></li>
+                <li><a href="#linux">Linux Modules</a></li>
+                <li><a href="#contact">Get Help / Contact</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            
+            <section id="roadmap" class="roadmap-container">
+                <h2>🚀 Your Progress</h2>
+                <div class="roadmap-item"><input type="checkbox"><span>Phase 1: Terminal Basics</span></div>
+                <div class="roadmap-item"><input type="checkbox"><span>Phase 2: User Management</span></div>
+                <div class="roadmap-item"><input type="checkbox"><span>Phase 3: Docker Basics</span></div>
+            </section>
+
+            <section id="linux">
+                <h2>Linux Administration</h2>
+                <p>Welcome to the core of systems engineering.</p>
+                
+            </section>
+
+            <section id="contact" class="contact-section">
+                <h2>Stuck on a Lab?</h2>
+                <p>Send a message and I'll get back to you as soon as possible.</p>
+                
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Question/Topic</label>
+                        <input type="text" placeholder="e.g., Docker Compose error">
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="Describe your issue..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-check">Send Message</button>
+                </form>
+                <p id="form-status" style="margin-top: 15px;"></p>
+            </section>
+
+        </main>
     </div>
-</div>
 
-<!-- NAV -->
-<nav>
-    <a href="#about">About</a>
-    <a href="#services">Practice</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<!-- ABOUT -->
-<section id="about">
-    <h2>About This Website</h2>
-
-    <div class="note">
-        📌 <strong>Practice Note:</strong>  
-        This site is perfect for Nginx, Docker, Kubernetes, Jenkins,
-        AWS EC2 & S3 static hosting demos.
-    </div>
-
-    <p>
-        This modern static website is created using pure HTML and CSS.
-        It includes animations, images, cards, and professional UI
-        used in real-world DevOps demos.
-    </p>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="services">
-    <h2>What You Can Practice</h2>
-
-    <div class="service-box">
-        <div class="card">
-            <img src="images/html.png" alt="HTML CSS">
-            <div class="card-content">
-                <h3>HTML & CSS</h3>
-                <p>Layouts, animations, cards, hero sections.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/devops.png" alt="DevOps">
-            <div class="card-content">
-                <h3>DevOps Deployment</h3>
-                <p>Nginx, Docker, Kubernetes, EC2, S3 hosting.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/cicd.png" alt="CI CD">
-            <div class="card-content">
-                <h3>CI/CD Pipelines</h3>
-                <p>Jenkins, GitHub Actions, automation demos.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="contact">
-    <h2>Contact</h2>
-    <p>Email: devops.practice@example.com</p>
-    <p>Location: India 🇮🇳</p>
-</section>
-
-<footer>
-    <p>© 2026 <span>DevOps Practice Hub</span> | Built for Hands-On Learning 🚀</p>
-</footer>
-
+    <script>
+        // Form Submission Logic
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const status = document.getElementById('form-status');
+            status.innerText = "Thanks! Your message has been 'sent' (UI Demo).";
+            status.style.color = "#b5cea8";
+            this.reset();
+        });
+    </script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DevOps Practice Website</title>
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
-    background: #0f2027;
-    color: #fff;
-    line-height: 1.6;
-}
-
-/* ===== HERO SECTION ===== */
-.hero {
-    position: relative;
-    height: 100vh;
-    background: url("images/hero.jpg") center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-}
-
-/* Moving Light Effect */
-.hero::before {
-    content: "";
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(0,198,255,0.3), transparent 60%);
-    animation: moveLight 6s linear infinite;
-}
-
-@keyframes moveLight {
-    0%   { transform: translate(-50%, -50%); }
-    50%  { transform: translate(0%, 0%); }
-    100% { transform: translate(-50%, -50%); }
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-    background: rgba(0,0,0,0.6);
-    padding: 40px;
-    border-radius: 12px;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    color: #00c6ff;
-}
-
-.hero p {
-    font-size: 1.2rem;
-}
-
-/* ===== NAV ===== */
-nav {
-    background: #111;
-    padding: 15px;
-    text-align: center;
-}
-
-nav a {
-    color: #fff;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav a:hover {
-    color: #00c6ff;
-}
-
-/* ===== SECTION ===== */
-section {
-    padding: 70px 10%;
-}
-
-/* ===== NOTE BOX ===== */
-.note {
-    background: linear-gradient(135deg, #00c6ff, #0072ff);
-    color: #fff;
-    padding: 20px;
-    border-left: 6px solid #fff;
-    margin: 20px 0;
-    border-radius: 8px;
-}
-
-/* ===== SERVICES ===== */
-.services {
-    background: #f4f6f8;
-    color: #333;
-}
-
-.service-box {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    margin-top: 40px;
-}
-
-.card {
-    background: #fff;
-    width: 300px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 25px 50px rgba(0,198,255,0.4);
-}
-
-.card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-}
-
-.card-content {
-    padding: 20px;
-}
-
-.card h3 {
-    margin-bottom: 10px;
-    color: #0072ff;
-}
-
-/* ===== CONTACT ===== */
-.contact {
-    text-align: center;
-}
-
-/* ===== FOOTER ===== */
-footer {
-    background: #111;
-    text-align: center;
-    padding: 20px;
-    color: #aaa;
-}
-
-footer span {
-    color: #00c6ff;
-}
-</style>
-</head>
-
-<body>
-
-<!-- HERO -->
-<div class="hero">
-    <div class="hero-content">
-        <h1>DevOps Practice Hub</h1>
-        <p>HTML • CSS • CI/CD • Cloud Deployment</p>
-    </div>
-</div>
-
-<!-- NAV -->
-<nav>
-    <a href="#about">About</a>
-    <a href="#services">Practice</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<!-- ABOUT -->
-<section id="about">
-    <h2>About This Website</h2>
-
-    <div class="note">
-        📌 <strong>Practice Note:</strong>  
-        This site is perfect for Nginx, Docker, Kubernetes, Jenkins,
-        AWS EC2 & S3 static hosting demos.
-    </div>
-
-    <p>
-        This modern static website is created using pure HTML and CSS.
-        It includes animations, images, cards, and professional UI
-        used in real-world DevOps demos.
-    </p>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="services">
-    <h2>What You Can Practice</h2>
-
-    <div class="service-box">
-        <div class="card">
-            <img src="images/html.png" alt="HTML CSS">
-            <div class="card-content">
-                <h3>HTML & CSS</h3>
-                <p>Layouts, animations, cards, hero sections.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/devops.png" alt="DevOps">
-            <div class="card-content">
-                <h3>DevOps Deployment</h3>
-                <p>Nginx, Docker, Kubernetes, EC2, S3 hosting.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/cicd.png" alt="CI CD">
-            <div class="card-content">
-                <h3>CI/CD Pipelines</h3>
-                <p>Jenkins, GitHub Actions, automation demos.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="contact">
-    <h2>Contact</h2>
-    <p>Email: devops.practice@example.com</p>
-    <p>Location: India 🇮🇳</p>
-</section>
-
-<footer>
-    <p>© 2026 <span>DevOps Practice Hub</span> | Built for Hands-On Learning 🚀</p>
-</footer>
-
-</body>
-</html>
-
