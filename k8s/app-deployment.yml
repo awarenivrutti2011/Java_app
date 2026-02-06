@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: stepup
-        image: awarenivrutti11/stepup-app:latest
+        image: awarenivrutti11/stepup-app:lates
         ports:
         - containerPort: 8080
         envFrom:
