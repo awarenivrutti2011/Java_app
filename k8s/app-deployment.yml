@@ -4,14 +4,14 @@ metadata:
   name: stepup-app
   namespace: stepup
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app: stepup
   template:
     metadata:
       labels:
-        app: stepu
+        app: stepup
     spec:
       containers:
       - name: stepup
