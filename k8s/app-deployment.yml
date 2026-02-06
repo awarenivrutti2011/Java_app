@@ -11,11 +11,11 @@ spec:
   template:
     metadata:
       labels:
-        app: stepup
+        app: stepu
     spec:
       containers:
       - name: stepup
-        image: awarenivrutti11/stepup-app:lates
+        image: awarenivrutti11/stepup-app:v1
         ports:
         - containerPort: 8080
         envFrom:
